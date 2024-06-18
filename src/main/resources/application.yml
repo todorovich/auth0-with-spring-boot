@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: "server"
+  data:
+    mongodb:
+      uri:  "mongodb+srv://micho:nopass@todorovich.o6sp96b.mongodb.net/?retryWrites=true&w=majority&appName=todorovich"
+
+server:
+  port: 80
+
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.auth0.example: TRACE
+    net.todorovich: INFO
+
+okta:
+  oauth2:
+    issuer-uri: http://www.todorovich.net/
+    issuer: https://dev-1nhpv0tsxpv8gwh4.us.auth0.com/
+    client-id: 3wPe0qo42GZmRNmPoYicqDCWqUGhoO7Z
+    client-secret: O_oEs5bRqK4uySc3eOpGkjzxN3pn6GWvTjpjdiyZ6ABL-EcE_3YBHJZcNgaY-1ZX
