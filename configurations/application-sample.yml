@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: "server"
+  data:
+    mongodb:
+      uri:  ""
+
+server:
+  port: 80
+
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    net.todorovich: TRACE
+
+okta:
+  oauth2:
+    issuer-uri: http://www.todorovich.net/
+    issuer: https://dev-1nhpv0tsxpv8gwh4.us.auth0.com/
+    client-id: ""
+    client-secret: ""
+

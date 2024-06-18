@@ -1,13 +1,7 @@
 FROM alpine/java:21-jdk
 
-ADD . /tmp
-WORKDIR /tmp
+COPY /target/*.jar server.jar
 
-RUN apk update && \
-    apk add maven &&  \
-    apk cache clean \
-    mvn install \
-
-CMD ["mvn", "spring-boot:run"]
+ENTRYPOINT ["java", "-jar", "server.jar"]
 
 EXPOSE 80

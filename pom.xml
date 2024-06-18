@@ -100,15 +100,42 @@
 					<pushRegistry>todorovich</pushRegistry>
 					<images>
 						<image>
-							<name>todorovich.net:${project.version}</name>
+							<name>todorovich/todorovich.net:${project.version}</name>
 							<build>
 								<contextDir>${project.basedir}</contextDir>
 								<dockerFile>src/main/docker/Dockerfile</dockerFile>
+								<tags>
+									<tag>latest</tag>
+								</tags>
 							</build>
 						</image>
 					</images>
 				</configuration>
 			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.0.1</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<!-- here the phase you need -->
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>configurations</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 
