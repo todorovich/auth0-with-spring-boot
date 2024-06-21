@@ -37,6 +37,8 @@ jobs:
       run: echo "${{secrets.TODOROVICH_LOCAL_PEM}}" | base64 --decode > ./certs/todorovich.local.pem
     - name: Decode pem
       run: echo "${{secrets.TODOROVICH_LOCAL_TRUSTSTORE}}" | base64 --decode > ./certs/todorovich.local.truststore
+    - name: Add hosts to /etc/hosts
+      run: sudo echo "127.0.0.1 www.todorovich.local" | sudo tee -a /etc/hosts      
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
