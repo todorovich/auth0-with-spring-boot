@@ -2,6 +2,6 @@ FROM alpine/java:21-jdk
 
 COPY /target/*.jar server.jar
 
-ENTRYPOINT ["java", "-jar", "server.jar"]
+ENTRYPOINT ["java", "-jar", "-Dspring.config.location=./configurations/", "server.jar"]
 
-EXPOSE 80
+EXPOSE 8443

@@ -1,0 +1,11 @@
+---
+services:
+  todorovich.net:
+    image: todorovich/todorovich.net
+    volumes:
+      - ./configurations/:/configurations/
+      - ./certs/:/certs/
+    ports:
+      - "443:8443"
+    environment:
+      JAVA_OPTIONS: "-Dspring.config.location=./configurations/"
