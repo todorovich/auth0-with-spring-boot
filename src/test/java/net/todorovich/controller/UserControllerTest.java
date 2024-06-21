@@ -37,7 +37,7 @@ class UserControllerTest {
 	void callUserController()
 	{
 		var response = restTemplate.postForEntity(
-			MessageFormat.format("http://www.todorovich.local:{0}/users/micho", String.valueOf(port)),
+			MessageFormat.format("https://www.todorovich.local:{0}/users/micho", String.valueOf(port)),
 			null,
 			String.class
 		);

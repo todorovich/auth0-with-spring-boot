@@ -1,8 +1,0 @@
----
-services:
-  todorovich.net:
-    image: todorovich/todorovich.net
-    volumes:
-      - ./application.yml:/application.yml
-    ports:
-      - "80:80"

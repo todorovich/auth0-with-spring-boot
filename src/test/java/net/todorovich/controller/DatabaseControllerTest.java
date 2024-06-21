@@ -39,7 +39,7 @@ class DatabaseControllerTest {
 	void listDatabaseName()
 	{
 		var response = restTemplate.postForEntity(
-			MessageFormat.format("http://www.todorovich.local:{0}/databases/", String.valueOf(port)),
+			MessageFormat.format("https://www.todorovich.local:{0}/databases/", String.valueOf(port)),
 			null,
 			String.class
 		);
