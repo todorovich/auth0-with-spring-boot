@@ -3,6 +3,7 @@ package net.todorovich.components;
 import com.mongodb.client.MongoClient;
 
 import com.mongodb.client.MongoIterable;
+import com.mongodb.lang.NonNull;
 import net.todorovich.server.ServerApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,28 +26,27 @@ public class DatabaseClient
         this.mongoClient =mongoClient;
     }
 
-    public class User
+    public static class User
     {
-        public net.todorovich.model.User get()
+        public static net.todorovich.model.User get(@NonNull String id)
         {
             return net.todorovich.model.User.builder()
-                    .id("micho")
+                    .id(id)
                     .build();
         }
     }
-
-    public final User user = new User();
 
     public Set<String> getDatabaseNames()
     {
         MongoIterable<String> strings = mongoClient.listDatabaseNames();
 
-        var cursor = strings.cursor();
-
-        var set = new TreeSet<String>();
-        while (cursor.hasNext())
+        TreeSet<String>  set = new TreeSet<>();
+        try (var cursor = strings.cursor())
         {
-            set.add(cursor.next());
+            while (cursor.hasNext())
+            {
+                set.add(cursor.next());
+            }
         }
 
         return set;
